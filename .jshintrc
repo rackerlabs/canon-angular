@@ -18,6 +18,8 @@
     "test": false,
     "before": false,
     "after": false,
-    "assert": false
+    "assert": false,
+    "$": false,
+    "angular": false
   }
 }

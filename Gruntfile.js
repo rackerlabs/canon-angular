@@ -1,31 +1,28 @@
 module.exports = function(grunt) {
  
+  grunt.loadNpmTasks('grunt-contrib-jshint');
+  grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-karma');
+
   grunt.initConfig({
     jshint: {
       options: {
         jshintrc: '.jshintrc'
       },
-      package: {
-        src: 'package.json'
-      },
       gruntfile: {
-        src: 'Gruntfile.js'
+        src: ['Gruntfile.js', 'package.json']
       },
       lib: {
         src: ['directives/**/*.js']
-      },
-      test: {
-        src: ['test/**/*.js']
+      }
+    },
+    karma: {
+      unit: {
+        configFile: 'karma.conf.js',
+        singleRun: true
       }
     },
     watch: {
-      package: {
-        files: '<%= jshint.package.src %>',
-        tasks: ['jshint:package'],
-        options: {
-          livereload: true
-        }
-      },
       gruntfile: {
         files: '<%= jshint.gruntfile.src %>',
         tasks: ['jshint:gruntfile'],
@@ -42,10 +39,14 @@ module.exports = function(grunt) {
       }
     }
   });
- 
-  grunt.loadNpmTasks('grunt-contrib-jshint');
-  grunt.loadNpmTasks('grunt-contrib-watch');
 
-  grunt.registerTask('default', ['jshint']);
+  grunt.registerTask('test', [
+    'karma'
+  ]);
+
+  grunt.registerTask('default', [
+    'jshint', 
+    'test'
+  ]);
  
 };
