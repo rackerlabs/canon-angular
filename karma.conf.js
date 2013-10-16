@@ -8,7 +8,7 @@ files = [
   JASMINE,
   JASMINE_ADAPTER,
   // 'examples/test-lib/jquery-1.8.2.min.js',
-  // 'examples/test-lib/angular.js',
+  'vendor/angular/angular.js',
   // 'examples/test-lib/angular-mocks.js',
   // 'examples/test-lib/helpers.js',
   // 'templates/**/*.js',

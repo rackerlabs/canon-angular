@@ -24,6 +24,19 @@ module.exports = function(grunt) {
         jshintrc: '.jshintrc'
       }
     },
+    karma: {
+      options: {
+        configFile: 'karma.conf.js'
+      },
+      dev: {
+        singleRun: true,
+        browsers: ['Chrome']
+      },
+      travis: {
+        singleRun: true,
+        browsers: ['Firefox']
+      }
+    },
     clean: {
       all: ['dist']
     },
@@ -74,10 +87,6 @@ module.exports = function(grunt) {
       }
     },
     watch: {
-      jshint: {
-        files: ['jshint:files'],
-        tasks: ['jshint']
-      },
       html: {
         files: ['examples/**/*.html', 'templates/**/*.html'],
         options: {
@@ -86,7 +95,7 @@ module.exports = function(grunt) {
       },
       lib: {
         files: '<%= jshint.files %>',
-        tasks: ['jshint'],
+        tasks: ['jshint', 'build'],
         options: {
           livereload: true
         }
@@ -94,7 +103,15 @@ module.exports = function(grunt) {
     }
   });
 
+  grunt.registerTask('test', 'Run tests on singleRun karma server', function() {
+    if (process.env.TRAVIS) {
+      grunt.task.run('karma:travis');
+    } else {
+      grunt.task.run('karma:dev');
+    }
+  });
+
   grunt.registerTask('build', ['clean', 'ngmin:directives', 'concat', 'uglify']);
-  grunt.registerTask('default', ['jshint', 'build']);
+  grunt.registerTask('default', ['jshint', 'build', 'test']);
   grunt.registerTask('server', ['jshint', 'build', 'connect:server', 'open', 'watch']);
 };
