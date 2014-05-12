@@ -10,7 +10,7 @@
   <link rel="stylesheet" type="text/css" href="/canon/dist/canon.min.css">
 
   <script type="application/javascript" src="/canon/dist/canon.min.js"></script>
-  <script type="application/javascript" src="/angular/angular.min.js"></script>
+  <script type="application/javascript" src="/angular/angular.js"></script>
   <script type="application/javascript" src="/canon-angular.js"></script>
   <script>
     var items = [{
@@ -34,6 +34,9 @@
         $timeout(function() {
           $scope.btnState = 'active';
         }, 2000);
+      };
+
+      $scope.cogActionHandler = function(item) {
       };
     }]);
   </script>
@@ -68,6 +71,24 @@
     <div class="rs-container">
       <div class="rs-main">
         <div class="rs-content rs-panel">
+
+
+          <div class="rs-inner">
+            <h2 class="rs-page-title">Cog Directive</h2>
+            <div>
+              build up cogs!
+              <rs-cog
+                label="Labeled Cog!"
+                action-handler="cogActionHandler(item)"
+                menu="[{label: 'identify', header: true}, {label: 'Rename Server'}, {label: 'Move Server', disabled: true}]"
+              ></rs-cog>
+              Unlabeled cog
+              <rs-cog
+                action-handler="cogActionHandler(item)"
+                menu="[{label: 'header', header: true}]"
+              ></rs-cog>
+            </div>
+          </div>
 
           <div class="rs-inner">
             <h2 class="rs-page-title">Tooltip Directive</h2>
