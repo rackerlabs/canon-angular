@@ -7,7 +7,7 @@ describe('rs-cog', function() {
     $directiveScope;
 
   beforeEach(module('ui.canon.cog'));
-   // Load the templates.
+  // Load the template.
   beforeEach(module('/views/directives/rs-cog.html'));
 
   beforeEach(inject(function($rootScope, _$compile_) {
