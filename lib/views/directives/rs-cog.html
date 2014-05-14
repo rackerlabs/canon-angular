@@ -6,7 +6,10 @@
   <ul ng-show="showDropdown" class="rs-dropdown-menu visible">
     <li ng-repeat="item in menu" class="rs-dropdown-item">
       <span ng-if="item.header" class="rs-dropdown-category">{{item.label}}</span>
-      <a ng-if="!item.header" class="rs-dropdown-link" ng-class="{disabled: item.disabled}" href ng-click="clickHandler(item)">
+      <a ng-if="!item.header && !item.href" class="rs-dropdown-link" ng-class="{disabled: item.disabled}" href ng-click="clickHandler(item)">
+        {{item.label}}…
+      </a>
+      <a ng-if="!item.header && item.href" class="rs-dropdown-link" ng-class="{disabled: item.disabled}" href="{{item.href}}">
         {{item.label}}…
       </a>
     </li>
