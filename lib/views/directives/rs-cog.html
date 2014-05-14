@@ -1,16 +1,14 @@
-<div style="position: relative">
-  <span ng-if="!label" class="rs-cog" ng-click="toggleDropdown()"></span>
-  <button ng-if="label" class="rs-btn rs-btn-action" ng-click="toggleDropdown()">
+<div class="rs-dropdown">
+  <span ng-if="!label" class="rs-cog rs-dropdown-toggle" ng-click="toggleDropdown()"></span>
+  <button ng-if="label" class="rs-btn rs-btn-action rs-dropdown-toggle" ng-click="toggleDropdown()">
     <span class="rs-cog"></span> {{label}} <span class="rs-caret"></span>
   </button>
-  <div ng-show="showDropdown" class="rs-dropdown" style="position: absolute; bottom: 0; left: 0;">
-    <ul class="rs-dropdown-menu visible">
-      <li ng-repeat="item in menu" class="rs-dropdown-item">
-        <span ng-if="item.header" class="rs-dropdown-category">{{item.label}}</span>
-        <a ng-if="!item.header" class="rs-dropdown-link" ng-class="{disabled: item.disabled}" href ng-click="clickHandler(item)">
-          {{item.label}}…
-        </a>
-      </li>
-    </ul>
-  </div>
+  <ul ng-show="showDropdown" class="rs-dropdown-menu visible">
+    <li ng-repeat="item in menu" class="rs-dropdown-item">
+      <span ng-if="item.header" class="rs-dropdown-category">{{item.label}}</span>
+      <a ng-if="!item.header" class="rs-dropdown-link" ng-class="{disabled: item.disabled}" href ng-click="clickHandler(item)">
+        {{item.label}}…
+      </a>
+    </li>
+  </ul>
 </div>
