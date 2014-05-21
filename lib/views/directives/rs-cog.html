@@ -1,0 +1,17 @@
+<div class="rs-dropdown">
+  <span ng-if="!label" class="rs-cog rs-dropdown-toggle" ng-click="toggleDropdown()"></span>
+  <button ng-if="label" class="rs-btn rs-btn-action rs-dropdown-toggle" ng-click="toggleDropdown()">
+    <span class="rs-cog"></span> {{label}} <span class="rs-caret"></span>
+  </button>
+  <ul ng-show="showDropdown" class="rs-dropdown-menu visible">
+    <li ng-repeat="item in menu" class="rs-dropdown-item">
+      <span ng-if="item.header" class="rs-dropdown-category">{{item.label}}</span>
+      <a ng-if="!item.header && !item.href" class="rs-dropdown-link" ng-class="{disabled: item.disabled}" href ng-click="clickHandler(item)">
+        {{item.label}}…
+      </a>
+      <a ng-if="!item.header && item.href" class="rs-dropdown-link" ng-class="{disabled: item.disabled}" href="{{item.href}}">
+        {{item.label}}…
+      </a>
+    </li>
+  </ul>
+</div>
