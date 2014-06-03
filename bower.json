@@ -1,6 +1,6 @@
 {
   "name": "canon-angular",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "main": [
     "build/canon-angular.js",
     "build/canon-angular.min.js"
