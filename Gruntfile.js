@@ -76,6 +76,7 @@ module.exports = function(grunt) {
     html2js: {
       options: {
         base: './lib',
+        module: 'ui.canon.templates',
         rename: function(moduleName) {
           return '/' + moduleName;
         },
